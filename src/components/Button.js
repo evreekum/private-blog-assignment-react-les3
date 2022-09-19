@@ -1,8 +1,16 @@
 import "../App.css";
 
-function Button({name, className, handleClick,id}) {
+function Button({name, handleClick}) {
 
     return (
+        <>
+            <button
+                type="button"
+                onClick={handleClick}
+            >
+                {name}
+            </button>
+        </>
 
 
     )
