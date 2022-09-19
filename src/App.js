@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import {Switch, Route, NavLink} from "react-router-dom";
 import BlogPost from "./pages/BlogpostPage";
@@ -11,49 +11,56 @@ import PrivateRoute from "./components/PrivateRoute";
 
 
 function App() {
-  // We houden in de state bij of iemand is "ingelogd" (simpele versie)
-  const [isAuthenticated, toggleIsAuthenticated ] = useState(false);
+    // We houden in de state bij of iemand is "ingelogd" (simpele versie)
+    const [isAuthenticated, toggleIsAuthenticated] = useState(false);
 
-  return (
-    <>
-        <nav>
-            <ul>
-                <li><NavLink to="/">home</NavLink></li>
-                <li><NavLink to="/blogposts">blogposts</NavLink></li>
-                <li><NavLink to="/login">Login</NavLink></li>
-                <li><NavLink to="/">uitloggen</NavLink></li>
-            </ul>
-        </nav>
+    function loginClick() {
+        toggleIsAuthenticated(true);
+    }
 
-        {isAuthenticated === true && <p>Je bent ingelogd</p>}
-        {isAuthenticated === true ? <p>Je bent ingelogd</p> : <p>Je bent NIET ingelogd</p>}
+    function logoutClick() {
+        toggleIsAuthenticated(false);
+    }
 
-        <Switch>
-            <Route exact path="/">
-                <Home/>
-            </Route>
+    return (
+        <>
+            <nav>
+                <ul>
+                    <li><NavLink to="/">home</NavLink></li>
+                    <li><NavLink to="/blogposts">blogposts</NavLink></li>
+                    <li><NavLink to="/login">Login</NavLink></li>
+                </ul>
+            </nav>
 
-            <Route path="/login">
-                <Login/>
-            </Route>
+            {isAuthenticated === true && <p>Je bent ingelogd</p>}
+            {isAuthenticated === true ? <p>Je bent ingelogd</p> : <p>Je bent NIET ingelogd</p>}
 
-            {/*<Route exact path=>*/}
-            {/*    {isAuthenticated === true ? <BlogPosts/> : <Redirect to="/login"/>}*/}
+            <Switch>
+                <Route exact path="/">
+                    <Home/>
+                </Route>
 
-            {/*</Route>*/}
+                <Route path="/login">
+                    <Login/>
+                </Route>
 
-            <PrivateRoute
-                exact path="/blogposts"
-                auth={isAuthenticated}>
-                <BlogPosts/>
-            </PrivateRoute>
+                {/*<Route exact path=>*/}
+                {/*    {isAuthenticated === true ? <BlogPosts/> : <Redirect to="/login"/>}*/}
 
-            <Route path="/blogposts/blog/:blogId">
-                <BlogPost/>
-            </Route>
-        </Switch>
-    </>
-  );
+                {/*</Route>*/}
+
+                <PrivateRoute
+                    exact path="/blogposts"
+                    auth={isAuthenticated}>
+                    <BlogPosts/>
+                </PrivateRoute>
+
+                <Route path="/blogposts/blog/:blogId">
+                    <BlogPost/>
+                </Route>
+            </Switch>
+        </>
+    );
 }
 
 export default App;

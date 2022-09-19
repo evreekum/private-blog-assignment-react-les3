@@ -12,7 +12,6 @@ function PrivateRoute({auth, children, ...rest}) {
         </Route>
 
     );
-
 }
 
 export default PrivateRoute;

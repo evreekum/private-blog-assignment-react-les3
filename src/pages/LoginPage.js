@@ -10,7 +10,7 @@ function Login() {
             <h1>login pagina</h1>
             <p>druk op de knop om in te loggen</p>
             <button>
-                <Link to="/blogposts"></Link>
+                <Link to="/"></Link>
                 inloggen
             </button>
         </>
