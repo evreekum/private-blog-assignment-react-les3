@@ -1,38 +1,78 @@
-.App {
-  text-align: center;
+/*////////////////////////
+    Table of Contents
+    1. Global Styles
+    2. Areas
+    3. Media Queries
+////////////////////////*/
+
+/* ------------------------------- 1. Global Styles -------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#root {
+    font-family: 'Rubik', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+nav {
+    width: 100%;
+    padding: 0 0 20px;
+    font-size: 20px;
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-basis: 50px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    background-color: darkorange;
+    height: 70px;
+    padding-left: 150px;
+    padding-right: 150px;
 }
 
-.App-link {
-  color: #61dafb;
+nav a,
+nav a:visited {
+    color: white;
+    text-decoration: none;
+    text-transform: capitalize;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+section {
+    width: calc(100%/2);
+
+}
+
+h1::first-letter,
+h2::first-letter {
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 32px;
+    padding-bottom: 10px;
+}
+h2 {
+    font-size: 35px;
+    padding-bottom: 20px;
 }
