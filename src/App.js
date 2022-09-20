@@ -7,27 +7,27 @@ import Home from "./pages/HomePage";
 import BlogPostsOverview from "./pages/BlogOverviewPage";
 import PrivateRoute from "./components/PrivateRoute";
 import NavBar from "./components/Navigation";
+import posts from "./data/posts.json"
 
 
 function App() {
     // We houden in de state bij of iemand is "ingelogd" (simpele versie)
     const [isAuthenticated, toggleIsAuthenticated] = useState(false);
 
-    // function loginClick() {
-    //     toggleIsAuthenticated(true);
-    //     console.log("Clicked")
-    // }
-    //
-    // // function logoutClick() {
-    // //     toggleIsAuthenticated(false);
-    // // }
+    function loginClick() {
+        toggleIsAuthenticated(true);
+    }
+
+    function logoutClick() {
+        toggleIsAuthenticated(false);
+    }
 
     return (
         <>
-            <NavBar/>
+            <NavBar isAuthenticated={isAuthenticated} logout={logoutClick}/>
 
-            {isAuthenticated === true && <p>Je bent ingelogd</p>}
-            {isAuthenticated === true ? <p>Je bent ingelogd</p> : <p>Je bent NIET ingelogd</p>}
+            {/*{isAuthenticated === true && <p>Je bent ingelogd</p>}*/}
+            {/*{isAuthenticated === true ? <p>Je bent ingelogd</p> : <p>Je bent NIET ingelogd</p>}*/}
 
             <Switch>
                 <Route exact path="/">
@@ -35,7 +35,9 @@ function App() {
                 </Route>
 
                 <Route path="/login">
-                    <Login auth={isAuthenticated}/>
+                    <Login
+                        login={loginClick}
+                    />
                 </Route>
 
 
@@ -55,7 +57,9 @@ function App() {
                 {/*</Route>*/}
 
                 <Route path="/blogposts/:blogId">
-                    <BlogPost/>
+                    <BlogPost
+                        posts={posts}
+                    />
                 </Route>
             </Switch>
         </>

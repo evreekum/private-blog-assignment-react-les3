@@ -1,13 +1,13 @@
 import React from "react";
-import Redirect from "react-router-dom/es/Redirect";
-import {Route} from "react-router-dom";
+import {Redirect, Route} from "react-router-dom";
+import BlogPostsOverview from "../pages/BlogOverviewPage";
+import posts from "../data/posts.json";
 
-
-function PrivateRoute({auth, children, ...rest}) {
+function PrivateRoute({auth, ...rest}) {
 
     return (
         <Route {...rest}>
-            {auth === true ? {children} : <Redirect to="/login"/>}
+            {auth === true ? <BlogPostsOverview posts={posts}/> : <Redirect to="/login"/>}
 
         </Route>
 

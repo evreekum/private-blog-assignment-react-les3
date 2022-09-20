@@ -11,18 +11,39 @@ function NavBar({isAuthenticated, logout}) {
                         <li>
                             <Button
                                 name="home"
-                            ></Button>
+                            />
                         </li>
                     </NavLink>
+                    {!isAuthenticated &&
+                    <NavLink to="/login">
+                        <li>
+                            <Button
+                                name="login"
+                            />
+                        </li>
+                    </NavLink>}
+                    {isAuthenticated &&
+                    <NavLink to="/blogposts">
+                        <li>
+                            <Button
+                                name="blogs"
+                            />
+                        </li>
+                    </NavLink>}
+                    {isAuthenticated &&
+                    <NavLink to="/">
+                        <li>
+                            <Button
+                                name="logout"
+                                handleClick={logout}
+                            ></Button>
+                        </li>
+                    </NavLink>}
 
-                    <li><NavLink to="/">home</NavLink></li>
-                    {/*{!isAuthenticated &&}*/}
-                    <li><NavLink to="/blogposts">blogposts</NavLink></li>
-                    <li><NavLink to="/login">Login</NavLink></li>
                 </ul>
             </nav>
         </div>
     );
-};
+}
 
 export default NavBar;
